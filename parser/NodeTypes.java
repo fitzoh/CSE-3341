@@ -1,0 +1,32 @@
+package parser;
+//enum of possible node types
+public enum NodeTypes {
+	PROG,
+	DECLSEQ,
+	STMTSEQ,
+	DECL,
+	IDLIST,
+	STMT,
+	ASSIGN,
+	IN,
+	OUT,
+	IF,
+	LOOP,
+	COND,
+	CMPR,
+	CMPROP,
+	EXPR,
+	PLUS,
+	MINUS,
+	TIMES,
+	TERM,
+	FACTOR,
+	ID,
+	CONST,
+	CASE,
+	NOT,
+	AND,
+	OR,
+	CASELIST,
+	CONSTLIST
+}

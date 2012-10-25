@@ -1,0 +1,36 @@
+Andrew Fitzgerald
+
+The end user interface is fairly simple:
+    create a scanner from a file name
+    use static parsing method to retrieve parseTree from scanner
+    get String representation of parseTree from ParseTree
+    create executor using parse tree and input file
+    get string representation of output by executing file
+    
+The scanner works by Scanning input character by character. Short tokens are checked for, and a token tuple is created once they are found.
+If no short token is found, input is read until a character that would end an id or const is found.
+This String is then passed in to the token tuple constructor, and classified as a id or const. If it is neither, an exception is thrown.
+
+There is no underlying object for the parser, only a series of static methods that rely on the state of the scanner.
+The initial parser call is made on an initialized scanner, it consumes it's required tokens, and passes the scanner to items below it, being returned a new parse tree which is added as a child to itself.
+This pattern is repeated all the way down the tree, with each production having a corresponding method which takes a scanner at the expected state, and returns a parse tree to be appended to the tree of the method that called it.
+
+The parse tree is a fairly simple structure, closely mirroring the different productions and terminal symbols.
+Each production is represented by a parse tree, and each production below it is represented as a child.
+After being produced by the Parser, the parse Tree contains the code necessary to represent itself as a string.
+This follows the same recursive descent structure, starting at the top, printing part of a string, making nested calls to recieve the intermediate strings, and concatenating at the end.
+Indentation levels are cascaded down with the recursive calls where needed.
+
+The Executor could have been folded into the parse tree given the method used, but I chose to create a separate class for it to reduce the clutter and provide a cleaner way to store the stateful ID variables.
+The same recursive descent method is used to evaluate the function. All productions that can possibly lead to an output function return a string.
+These strings are propogated up the program and concatenated to give the final output.
+Expressions and all productions below them return and integer.
+Conditions and the productions below them return a boolean.
+Inputs and assignment methods are void, and only change the state of the variables.
+
+
+Testing was done on the given examples and modifications based on the initial samples, including various permutations of case examples, over a selection of input values.
+
+All borrowed ideas/code were from the class lecture. I supposed I borrowed the tree implementation for the printing and execution because the tree representation seemed more intuitive than the table implementation used in class.
+
+At the moment, I am not aware of any bugs.
