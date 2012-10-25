@@ -1,6 +1,12 @@
+CSE 3341 Project 1
+Fall 2012
 Andrew Fitzgerald
 
-Files
+Implementation of "Core" programming language
+
+
+
+Description of files:
     exec
         Executor.java
             given input file and parsetree, creates ID list and executes code, returning an output string
@@ -21,11 +27,10 @@ Files
             enum of different token types
         TokenTuple.java
             utility class which stores token type and content, also checks validity of id's/constants
-            
-Compiling:
-    From Core, enter
-        javac @core.src
+    
+        
+Compilation:
+    javac @core.src
 Running:
-    From core, enter
-        java exec.Main program.code program.data
+    java exec.Main program.code program.data
     where program.code is the input program and program.data is the accopmanying input file.
